@@ -1,4 +1,4 @@
-package com.example.kelp_project;
+package com.generation.kelp_project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
