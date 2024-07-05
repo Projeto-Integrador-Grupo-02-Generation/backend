@@ -22,7 +22,7 @@ public class CategoriaModel {
 	private String nome;
 	
 	@NotBlank(message = "descrição obrigatória")
-	@Size(min = 5, max = 100, message = "O atributo descrição deve conter no mínimo 5 e no máximo 100 caracters")
+	@Size(min = 5, max = 600, message = "O atributo descrição deve conter no mínimo 5 e no máximo 100 caracters")
 	private String descricao;
 
 	public Long getId() {
