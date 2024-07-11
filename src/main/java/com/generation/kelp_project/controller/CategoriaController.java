@@ -48,13 +48,13 @@ public class CategoriaController {
 
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<CategoriaModel> updateCategoria(@PathVariable Long id,
-			@RequestBody CategoriaModel categorias) {
-		return categoriaRepository.findById(id).map(sc -> {
-			sc.setNome(categorias.getNome());
-			return ResponseEntity.ok(categoriaRepository.save(sc));
-		}).orElse(ResponseEntity.notFound().build());
+	@PutMapping
+	public ResponseEntity<CategoriaModel> put (@Valid @RequestBody CategoriaModel categorias) {
+		if (categoriaRepository.existsById(categorias.getId())) {
+			return ResponseEntity.status(HttpStatus.OK)
+					.body(categoriaRepository.save(categorias));
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 
 	@PostMapping
