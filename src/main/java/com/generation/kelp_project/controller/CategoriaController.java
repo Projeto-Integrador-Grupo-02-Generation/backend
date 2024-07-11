@@ -1,5 +1,6 @@
 package com.generation.kelp_project.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,36 +25,51 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/categorias")
-@CrossOrigin( origins ="*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
+	@GetMapping
+	public ResponseEntity<List<CategoriaModel>> getAll() {
+		return ResponseEntity.ok(categoriaRepository.findAll());
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<CategoriaModel> getById(@PathVariable Long id) {
+		return categoriaRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<CategoriaModel>> getByNome_jogo(@PathVariable String nome) {
+		return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(nome));
+
+	}
+
 	@PutMapping("/{id}")
-	public ResponseEntity<CategoriaModel> updateCategoria(@PathVariable Long id, @RequestBody CategoriaModel categorias){
-		return categoriaRepository.findById(id)
-				.map(sc -> {
-					sc.setNome(categorias.getNome());
-					return ResponseEntity.ok(categoriaRepository.save(sc));
-				}).orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<CategoriaModel> updateCategoria(@PathVariable Long id,
+			@RequestBody CategoriaModel categorias) {
+		return categoriaRepository.findById(id).map(sc -> {
+			sc.setNome(categorias.getNome());
+			return ResponseEntity.ok(categoriaRepository.save(sc));
+		}).orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
-	public ResponseEntity<CategoriaModel> post (@Valid @RequestBody CategoriaModel categoria){
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(categoriaRepository.save(categoria));
+	public ResponseEntity<CategoriaModel> post(@Valid @RequestBody CategoriaModel categoria) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
 	}
-	
+
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
-	public void delete (@PathVariable Long id) {
+	public void delete(@PathVariable Long id) {
 		Optional<CategoriaModel> categoria = categoriaRepository.findById(id);
-		
+
 		if (categoria.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		
+
 		categoriaRepository.deleteById(id);
 	}
 }
-
