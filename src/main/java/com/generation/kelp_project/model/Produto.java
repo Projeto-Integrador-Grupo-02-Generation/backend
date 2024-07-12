@@ -43,7 +43,7 @@ public class Produto {
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
-	
+  
 
 	public Long getId() {
 		return id;
@@ -84,13 +84,4 @@ public class Produto {
 	public void setEstoque_produto(int estoque_produto) {
 		this.estoque_produto = estoque_produto;
 	}
-	
-
-	
-	
-	//TODO Relacionar a Classe Model Produto com a Classe Model Categoria;
-	// (Produto: ManyToOne e Categoria: OneToMany
-	
-	//TODO Relacionar a Classe Model de Produto com a Classe Model Usuario
-	// (Produto: ManyToOne e Usuário: OneToMany)
 }
