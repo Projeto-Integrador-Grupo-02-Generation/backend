@@ -2,10 +2,13 @@ package com.generation.kelp_project.model;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
@@ -27,11 +30,16 @@ public class Produto {
 	private String descricao_produto;
 	
 	@NotNull(message = "O atributo preco_produto é obrigatório.")
-	@Digits(integer = 8, fraction = 2, message = "O atributo preco_produto deve conter no mínimo 5 e no máximo 100 caracters.")
+	@Digits(integer = 8, fraction = 2, message = "O atributo preco_produto deve deve conter no máximo 8 casas inteiras e 2 decimais.")
 	private BigDecimal preco_produto;
 	
 	@NotNull(message = "O atributo estoque_produto é obrigatório.")
 	private int estoque_produto;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario;
+	
 
 	public Long getId() {
 		return id;
@@ -73,5 +81,12 @@ public class Produto {
 		this.estoque_produto = estoque_produto;
 	}
 	
+
 	
+	
+	//TODO Relacionar a Classe Model Produto com a Classe Model Categoria;
+	// (Produto: ManyToOne e Categoria: OneToMany
+	
+	//TODO Relacionar a Classe Model de Produto com a Classe Model Usuario
+	// (Produto: ManyToOne e Usuário: OneToMany)
 }
