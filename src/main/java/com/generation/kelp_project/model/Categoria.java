@@ -32,7 +32,7 @@ public class Categoria {
 	@Size(min = 5, max = 600, message = "O atributo descrição deve conter no mínimo 5 e no máximo 600 caracters")
 	private String descricao;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 
