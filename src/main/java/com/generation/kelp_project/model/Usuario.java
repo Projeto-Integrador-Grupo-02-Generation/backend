@@ -16,7 +16,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O atributo nome é obrigatório.")
+	@NotBlank(message = "O atributo nome_usuario é obrigatório.")
 	@Size(min = 5, max = 100, message = "O atributo nome_usuario deve conter no mínimo 5 e no máximo 100 caracters.")
 	private String nome_usuario;
 	
