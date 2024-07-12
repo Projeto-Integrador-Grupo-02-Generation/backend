@@ -24,23 +24,22 @@ public class Usuario {
 	private Long id;
 	
 	@NotBlank(message = "O atributo nome_usuario é obrigatório.")
-	@Size(min = 5, max = 100, message = "O atributo nome_usuario deve conter no mínimo 5 e no máximo 100 caracters.")
-	private String nome_usuario;
+	@Size(min = 3, max = 100, message = "O atributo nome deve conter no mínimo 3 e no máximo 100 caracters.")
+	private String nome;
 	
 	@NotBlank(message = "O atributo email é obrigatório.")
-	@Size(min = 5, max = 100, message = "O atributo email_usuario deve conter no mínimo 5 e no máximo 100 caracters.")
-	private String email_usuario;
+	@Size(min = 5, max = 100, message = "O atributo email deve conter no mínimo 5 e no máximo 100 caracters.")
+	private String email;
 	
 	@NotBlank(message = "O atributo senha é obrigatório.")
-	@Size(min = 5, max = 100, message = "O atributo senha_usuario deve conter no mínimo 5 e no máximo 100 caracters.")
-	private String senha_usuario;
+	@Size(min = 8, message = "O atributo senha deve conter no mínimo 8 caracteres")
+	private String senha;
 	
-	private String foto_usuario;
+	private String foto;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produto;
-	
 
 	public Long getId() {
 		return id;
@@ -50,37 +49,47 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getNome_usuario() {
-		return nome_usuario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNome_usuario(String nome_usuario) {
-		this.nome_usuario = nome_usuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getEmail_usuario() {
-		return email_usuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmail_usuario(String email_usuario) {
-		this.email_usuario = email_usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getSenha_usuario() {
-		return senha_usuario;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setSenha_usuario(String senha_usuario) {
-		this.senha_usuario = senha_usuario;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public String getFoto_usuario() {
-		return foto_usuario;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setFoto_usuario(String foto_usuario) {
-		this.foto_usuario = foto_usuario;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+	
+	
 	
 	
 }
