@@ -30,7 +30,6 @@ public class Usuario {
 
 	@Email
 	@NotBlank(message = "O atributo usuario é Obrigatório!")
-	@Size(min = 5, message = "O  Usuario deve conter no minimo 5 caracteres")
 	private String usuario;
 
 	@NotBlank(message = "O atributo senha é obrigatório.")
@@ -91,5 +90,4 @@ public class Usuario {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-
 }

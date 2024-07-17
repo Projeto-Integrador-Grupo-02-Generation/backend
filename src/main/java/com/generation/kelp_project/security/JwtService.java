@@ -17,7 +17,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtService {
-	
+
 	public static final String SECRET = "18ddd7c99bb107cdddf0a76aa44b5665d2f34de9c324bade6c79960fbea4f492";
 
 	private Key getSignKey() {
@@ -26,9 +26,7 @@ public class JwtService {
 	}
 
 	private Claims extractAllClaims(String token) {
-		return Jwts.parserBuilder()
-				.setSigningKey(getSignKey()).build()
-				.parseClaimsJws(token).getBody();
+		return Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token).getBody();
 	}
 
 	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
@@ -53,12 +51,8 @@ public class JwtService {
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 
-	
 	private String createToken(Map<String, Object> claims, String userName) {
-		return Jwts.builder()
-				.setClaims(claims)
-				.setSubject(userName)
-				.setIssuedAt(new Date(System.currentTimeMillis()))
+		return Jwts.builder().setClaims(claims).setSubject(userName).setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
 				.signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
 	}
@@ -67,5 +61,4 @@ public class JwtService {
 		Map<String, Object> claims = new HashMap<>();
 		return createToken(claims, userName);
 	}
-
 }

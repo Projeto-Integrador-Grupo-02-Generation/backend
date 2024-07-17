@@ -15,7 +15,7 @@ import com.generation.kelp_project.repository.UsuarioRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
@@ -28,6 +28,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			return new UserDetailsImpl(usuario.get());
 		else
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-			
 	}
 }

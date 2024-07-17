@@ -9,5 +9,4 @@ public class KelpProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KelpProjectApplication.class, args);
 	}
-
 }
