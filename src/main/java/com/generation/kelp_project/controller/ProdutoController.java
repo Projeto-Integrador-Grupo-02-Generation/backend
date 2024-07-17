@@ -47,16 +47,16 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 
 	}
+
 	@PostMapping
 	public ResponseEntity<Produto> post(@Valid @RequestBody Produto categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(categoria));
 	}
 
 	@PutMapping
-	public ResponseEntity<Produto> put (@Valid @RequestBody Produto produtos) {
+	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produtos) {
 		if (produtoRepository.existsById(produtos.getId())) {
-			return ResponseEntity.status(HttpStatus.OK)
-					.body(produtoRepository.save(produtos));
+			return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produtos));
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}

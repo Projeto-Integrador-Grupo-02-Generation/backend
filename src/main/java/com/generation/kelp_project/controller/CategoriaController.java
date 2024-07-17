@@ -47,16 +47,16 @@ public class CategoriaController {
 		return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(nome));
 
 	}
+
 	@PostMapping
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
 	}
 
 	@PutMapping
-	public ResponseEntity<Categoria> put (@Valid @RequestBody Categoria categorias) {
+	public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria categorias) {
 		if (categoriaRepository.existsById(categorias.getId())) {
-			return ResponseEntity.status(HttpStatus.OK)
-					.body(categoriaRepository.save(categorias));
+			return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categorias));
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
