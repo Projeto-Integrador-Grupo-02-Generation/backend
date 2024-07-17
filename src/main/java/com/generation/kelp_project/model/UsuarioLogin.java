@@ -8,41 +8,44 @@ public class UsuarioLogin {
 	private String senha;
 	private String foto;
 	private String token;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
-		id = id;
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
-		nome = nome;
+		this.nome = nome;
 	}
 	public String getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(String usuario) {
-		usuario = usuario;
+		this.usuario = usuario;
 	}
 	public String getSenha() {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		senha = senha;
+		this.senha = senha;
 	}
 	public String getFoto() {
 		return foto;
 	}
 	public void setFoto(String foto) {
-		foto = foto;
+		this.foto = foto;
 	}
 	public String getToken() {
 		return token;
 	}
 	public void setToken(String token) {
-		token = token;
+		this.token = token;
 	}
+	
+	
 	
 }
