@@ -2,47 +2,47 @@ package com.generation.kelp_project.model;
 
 public class UsuarioLogin {
 
-	private Long Id;
-	private String Nome;
-	private String Usuario;
-	private String Senha;
-	private String Foto;
-	private String Token;
+	private Long id;
+	private String nome;
+	private String usuario;
+	private String senha;
+	private String foto;
+	private String token;
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		id = id;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
+		nome = nome;
 	}
 	public String getUsuario() {
-		return Usuario;
+		return usuario;
 	}
 	public void setUsuario(String usuario) {
-		Usuario = usuario;
+		usuario = usuario;
 	}
 	public String getSenha() {
-		return Senha;
+		return senha;
 	}
 	public void setSenha(String senha) {
-		Senha = senha;
+		senha = senha;
 	}
 	public String getFoto() {
-		return Foto;
+		return foto;
 	}
 	public void setFoto(String foto) {
-		Foto = foto;
+		foto = foto;
 	}
 	public String getToken() {
-		return Token;
+		return token;
 	}
 	public void setToken(String token) {
-		Token = token;
+		token = token;
 	}
 	
 }

@@ -35,6 +35,7 @@ public class Usuario {
 	@Size(min = 8, message = "O atributo senha deve conter no mínimo 8 caracteres")
 	private String senha;
 	
+	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
 	private String foto;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
@@ -88,6 +89,8 @@ public class Usuario {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
+
+ 
 	
 	
 	
