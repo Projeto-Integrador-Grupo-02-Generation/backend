@@ -60,7 +60,7 @@ public class BasicSecurityConfig {
 		http.authorizeHttpRequests(
 				(auth) -> auth.requestMatchers("/usuarios/logar").permitAll().requestMatchers("/usuarios/cadastrar")
 						.permitAll().requestMatchers("/error/**").permitAll().requestMatchers(HttpMethod.OPTIONS)
-						.permitAll().requestMatchers("/produtos/**").permitAll().anyRequest().authenticated())
+						.permitAll().requestMatchers("/produtos/all").permitAll().anyRequest().authenticated())
 				.authenticationProvider(authenticationProvider())
 				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).httpBasic(withDefaults());
 
