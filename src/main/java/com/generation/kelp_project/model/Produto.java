@@ -38,6 +38,11 @@ public class Produto {
 	@NotNull(message = "O atributo estoque é obrigatório.")
 	private int estoque;
 
+	@NotBlank(message = "O atributo Imagem é obrigatório.")
+	private String imagem;
+
+
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
@@ -65,6 +70,7 @@ public class Produto {
 	public String getDescricao() {
 		return descricao;
 	}
+
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
@@ -100,5 +106,13 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 }
